@@ -4,7 +4,8 @@ FROM mcr.microsoft.com/devcontainers/java:17
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends \
     git \
-    maven \
+    curl \
+    unzip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -24,6 +25,16 @@ RUN groupadd --gid $USER_GID $USERNAME \
 # Set the default user
 USER $USERNAME
 
-# Configure Maven settings
-RUN mkdir -p /home/$USERNAME/.m2 \
-    && chown -R $USERNAME:$USE
+# Install Gradle
+RUN curl -L https://services.gradle.org/distributions/gradle-8.5-bin.zip -o gradle.zip \
+    && unzip gradle.zip \
+    && mv gradle-8.5 /home/$USERNAME/gradle \
+    && rm gradle.zip
+
+# Add Gradle to PATH
+ENV PATH=$PATH:/home/$USERNAME/gradle/bin
+
+# Configure Gradle home
+ENV GRADLE_USER_HOME=/home/$USERNAME/.gradle
+RUN mkdir -p $GRADLE_USER_HOME \
+    && chown -R $USERNAME:$USERNAME $GRADLE_USER_HOME

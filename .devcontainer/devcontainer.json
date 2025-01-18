@@ -1,5 +1,5 @@
 {
-    "name": "Minecraft Plugin Development",
+    "name": "ducksunlimited",
     "dockerFile": "Dockerfile",
     "customizations": {
         "vscode": {
@@ -9,7 +9,9 @@
                 "vscjava.vscode-maven",
                 "vscjava.vscode-java-debug",
                 "vscjava.vscode-java-dependency",
-                "vscjava.vscode-java-test"
+                "vscjava.vscode-java-test",
+                "github.vscode-github-actions",
+                "davidanson.vscode-markdownlint"
             ],
             "settings": {
                 "java.configuration.updateBuildConfiguration": "automatic",
@@ -29,7 +31,8 @@
     },
     "remoteUser": "vscode",
     "mounts": [
-        "source=${localEnv:HOME}/.m2,target=/home/vscode/.m2,type=bind,consistency=cached"
+        "source=${localEnv:HOME}/.m2,target=/home/vscode/.m2,type=bind,consistency=cached",
+        "source=${localEnv:HOME}/.gradle,target=/home/vscode/.gradle,type=bind,consistency=cached"
     ],
-    "postCreateCommand": "java -version && mvn -version"
+    "postCreateCommand": "java -version && ./gradlew --version"
 }

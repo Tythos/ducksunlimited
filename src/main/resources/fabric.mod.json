@@ -1,0 +1,31 @@
+{
+    "schemaVersion": 1,
+    "id": "ducksunlimited",
+    "version": "${version}",
+    "name": "Ducks Unlimited",
+    "description": "A basic Fabric-based ducks mod",
+    "authors": [
+        "Brian Kirkpatrick <code@tythos.net>"
+    ],
+    "contact": {
+        "homepage": "https://github.com/Tythos/ducksunlimited",
+        "sources": "https://github.com/Tythos/ducksunlimited"
+    },
+    "license": "MIT",
+    "icon": "assets/ducksunlimited/icon.png",
+    "environment": "*",
+    "entrypoints": {
+        "main": [
+            "net.tythos.ducksunlimited.DucksUnlimited"
+        ]
+    },
+    "mixins": [
+        "ducksunlimited.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=0.14.22",
+        "minecraft": "~1.20.1",
+        "java": ">=17",
+        "fabric-api": "*"
+    }
+}
