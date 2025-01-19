@@ -4,7 +4,9 @@ Server-side mod for adding support for various ducks and their behavior to a Min
 
 ## Quickstart
 
-To build and package the mod:
+To build and package the mod, launch (if using VS Code) the devcontainer.
+
+Then (from any supported environment) run the following:
 
 ```bash
 gradle releaseJar
