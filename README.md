@@ -2,7 +2,6 @@
 
 Server-side mod for adding support for various ducks and their behavior to a Minecraft world.
 
-
 To verify the mod is working:
 
 1. In-game verification:
@@ -18,19 +17,21 @@ To verify the mod is working:
 
 ```bash
 # Build the release package
-./gradlew releaseJar
+./gradle releaseJar
 
 # Publish to Maven repository
-./gradlew publish
+./gradle publish
 ```
 
 The mod artifacts will be in:
+
 - `build/libs/modname-<version>.jar` - Main mod file
 - `build/libs/modname-<version>-sources.jar` - Source code
 - `build/libs/modname-<version>-javadoc.jar` - Documentation
 - `build/libs/modname-<version>-release.zip` - Complete release package
 
 To install on a server:
+
 1. Take the main JAR file (`modname-<version>.jar`)
 2. Place it in the server's `mods` folder
 3. Restart the server
@@ -38,6 +39,7 @@ To install on a server:
 5. Try the `/modtest` command in-game
 
 The publishing configuration supports:
+
 1. Maven repository publishing
 2. Source and JavaDoc artifacts
 3. Complete release packages
@@ -45,6 +47,7 @@ The publishing configuration supports:
 5. Secure credential management
 
 Would you like me to:
+
 1. Add more in-game verification features?
 2. Create a GitHub Actions workflow for automated publishing?
 3. Add server-side configuration options?
