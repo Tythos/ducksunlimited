@@ -11,18 +11,6 @@ base {
     archivesName = project.archives_base_name
 }
 
-repositories {
-    // Add repositories here
-    maven {
-        name = "ModRepositoryName" // Replace with your repository name
-        url = "https://maven.tythos.net/releases" // Replace with your repository URL
-        credentials {
-            username = project.findProperty("mavenUsername") ?: System.getenv("MAVEN_USERNAME")
-            password = project.findProperty("mavenPassword") ?: System.getenv("MAVEN_PASSWORD")
-        }
-    }
-}
-
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
@@ -87,24 +75,11 @@ publishing {
                 }
                 developers {
                     developer {
-                        id = 'tythos'
+                        id = 'tythoseternal'
                         name = 'Brian Kirkpatrick'
                         email = 'code@tythos.net'
                     }
                 }
-            }
-        }
-    }
-    
-    repositories {
-        maven {
-            name = "ModRepositoryName"
-            url = version.endsWith('SNAPSHOT') 
-                ? "https://maven.tythos.net/snapshots"
-                : "https://maven.tythos.net/releases"
-            credentials {
-                username = project.findProperty("mavenUsername") ?: System.getenv("MAVEN_USERNAME")
-                password = project.findProperty("mavenPassword") ?: System.getenv("MAVEN_PASSWORD")
             }
         }
     }
