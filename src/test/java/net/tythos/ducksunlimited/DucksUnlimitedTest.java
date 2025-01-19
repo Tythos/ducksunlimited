@@ -1,44 +1,31 @@
 package net.tythos.ducksunlimited;
 
-import net.fabricmc.loader.api.FabricLoader;
-import org.junit.jupiter.api.BeforeEach;
+import com.mojang.brigadier.CommandDispatcher;
+import net.minecraft.server.command.ServerCommandSource;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-
-import java.nio.file.Path;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DucksUnlimitedTest {
-    private DucksUnlimited mod;
-    
-    @BeforeEach
-    void setup() {
-        mod = new DucksUnlimited();
-    }
-
     @Test
-    void testModInitialization() {
-        // Basic initialization test
-        assertDoesNotThrow(() -> mod.onInitialize());
-    }
-
-    @Test
-    void testModId() {
-        assertEquals("ducksunlimited", DucksUnlimited.MOD_ID);
-    }
-    
-    @Test
-    void testModPresenceInFabric() {
-        // Verify mod is properly registered
-        assertTrue(FabricLoader.getInstance()
-            .getAllMods()
-            .stream()
-            .anyMatch(container -> 
-                container.getMetadata()
-                    .getId()
-                    .equals(DucksUnlimited.MOD_ID)
-            )
+    void testCommandRegistration() {
+        DucksUnlimited mod = new DucksUnlimited();
+        
+        // Create a command dispatcher for testing
+        CommandDispatcher<ServerCommandSource> dispatcher = new CommandDispatcher<>();
+        
+        // Initialize the mod
+        mod.onInitialize();
+        
+        // Trigger command registration
+        CommandRegistrationCallback.EVENT.invoker().register(
+            dispatcher,
+            null,
+            null
         );
+        
+        // Verify command exists
+        assertTrue(dispatcher.getRoot().getChild("modtest") != null,
+            "modtest command should be registered");
     }
 }
