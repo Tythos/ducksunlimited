@@ -1,31 +1,41 @@
 {
-    "schemaVersion": 1,
-    "id": "ducksunlimited",
-    "version": "${version}",
-    "name": "Ducks Unlimited",
-    "description": "A basic Fabric-based ducks mod",
-    "authors": [
-        "Brian Kirkpatrick <code@tythos.net>"
-    ],
-    "contact": {
-        "homepage": "https://github.com/Tythos/ducksunlimited",
-        "sources": "https://github.com/Tythos/ducksunlimited"
-    },
-    "license": "MIT",
-    "icon": "assets/ducksunlimited/icon.png",
-    "environment": "*",
-    "entrypoints": {
-        "main": [
-            "net.tythos.ducksunlimited.DucksUnlimited"
-        ]
-    },
-    "mixins": [
-        "ducksunlimited.mixins.json"
-    ],
-    "depends": {
-        "fabricloader": ">=0.14.22",
-        "minecraft": "~1.20.1",
-        "java": ">=17",
-        "fabric-api": "*"
-    }
+	"schemaVersion": 1,
+	"id": "ducksunlimiteed",
+	"version": "${version}",
+	"name": "ducksunlimiteed",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/ducksunlimiteed/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.tythos.ducksunlimited.Ducksunlimiteed"
+		],
+		"client": [
+			"net.tythos.ducksunlimited.DucksunlimiteedClient"
+		]
+	},
+	"mixins": [
+		"ducksunlimiteed.mixins.json",
+		{
+			"config": "ducksunlimiteed.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.10",
+		"minecraft": "~1.21.4",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
 }

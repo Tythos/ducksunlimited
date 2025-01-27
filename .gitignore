@@ -1,76 +1,40 @@
-# Gradle project-specific cache directory
+# gradle
+
 .gradle/
-
-# Gradle build output directory
 build/
+out/
+classes/
 
-# Eclipse
-.classpath
-.project
-.settings/
-bin/
+# eclipse
 
-# IntelliJ IDEA
+*.launch
+
+# idea
+
 .idea/
 *.iml
 *.ipr
 *.iws
-out/
 
-# VS Code
+# vscode
+
+.settings/
 .vscode/
-*.code-workspace
+bin/
+.classpath
+.project
 
-# Minecraft run directory
+# macos
+
+*.DS_Store
+
+# fabric
+
 run/
 
-# Fabric
-.fabric/
-*.launch
+# java
 
-# Java
-*.class
-*.log
-*.ctxt
-.mtj.tmp/
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
-hs_err_pid*
-replay_pid*
-
-# Keep Gradle wrapper jar
-!gradle/wrapper/gradle-wrapper.jar
-
-# Common development files
+hs_err_*.log
+replay_*.log
 *.hprof
-.DS_Store
-Thumbs.db
-
-# Mod development
-*.launch.json
-logs/
-crash-reports/
-config/
-mods/
-saves/
-screenshots/
-resourcepacks/
-debug.log
-
-# Local development environment
-local.properties
-*.env
-
-# Backup files
-*~
-*.bak
-*.swp
-*.swo
-
-# Generated resources
-src/generated/
+*.jfr
