@@ -21,8 +21,8 @@
                 "editor.formatOnPaste": true,
                 "java.configuration.runtimes": [
                     {
-                        "name": "JavaSE-17",
-                        "path": "/usr/local/openjdk-17",
+                        "name": "JavaSE-21",
+                        "path": "/usr/local/openjdk-21",
                         "default": true
                     }
                 ]

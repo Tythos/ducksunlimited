@@ -1,8 +1,8 @@
 {
 	"schemaVersion": 1,
-	"id": "ducksunlimiteed",
+	"id": "ducksunlimited",
 	"version": "${version}",
-	"name": "ducksunlimiteed",
+	"name": "ducksunlimited",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
 		"Me!"
@@ -12,20 +12,20 @@
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/ducksunlimiteed/icon.png",
+	"icon": "assets/ducksunlimited/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.tythos.ducksunlimited.Ducksunlimiteed"
+			"net.tythos.ducksunlimited.ducksunlimited"
 		],
 		"client": [
-			"net.tythos.ducksunlimited.DucksunlimiteedClient"
+			"net.tythos.ducksunlimited.ducksunlimitedClient"
 		]
 	},
 	"mixins": [
-		"ducksunlimiteed.mixins.json",
+		"ducksunlimited.mixins.json",
 		{
-			"config": "ducksunlimiteed.client.mixins.json",
+			"config": "ducksunlimited.client.mixins.json",
 			"environment": "client"
 		}
 	],
