@@ -1,7 +1,6 @@
 plugins {
-    id 'fabric-loom' version '1.4-SNAPSHOT'
+    id 'fabric-loom' version '1.9-SNAPSHOT'
     id 'maven-publish'
-    id 'java'
 }
 
 version = project.mod_version
@@ -9,6 +8,21 @@ group = project.maven_group
 
 base {
     archivesName = project.archives_base_name
+}
+
+repositories {
+    // 
+}
+
+loom {
+    splitEnvironmentSourceSets()
+
+    mods {
+        "modid" {
+            sourceSet sourceSets.main
+            sourceSet sourceSets.client
+        }
+    }
 }
 
 dependencies {
@@ -27,60 +41,30 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    it.options.release = 17
+    it.options.release = 21
 }
 
 java {
     withSourcesJar()
-    withJavadocJar()
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
-// Task to create a release package
-task releaseJar(type: Zip) {
-    from jar
-    from sourcesJar
-    from javadocJar
-    from "LICENSE"
-    from "README.md"
-    archiveClassifier = "release"
+jar {
+    from("LICENSE") {
+        rename { "${it}_${project.base.archivesName.get()}"}
+    }
 }
 
-// Publishing configuration
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        create("mavenJava", MavenPublication) {
+            artifactId = project.archives_base_name
             from components.java
-            
-            artifact(sourcesJar) {
-                classifier = "sources"
-            }
-            
-            artifact(javadocJar) {
-                classifier = "javadoc"
-            }
-            
-            artifact(releaseJar) {
-                classifier = "release"
-            }
-            
-            pom {
-                name = project.archives_base_name
-                description = 'A Fabric-based ducks mod for Minecraft'
-                url = 'https://github.com/Tythos/ducksunlimited'
-                licenses {
-                    license {
-                        name = 'MIT License'
-                        url = 'https://opensource.org/licenses/MIT'
-                    }
-                }
-                developers {
-                    developer {
-                        id = 'tythoseternal'
-                        name = 'Brian Kirkpatrick'
-                        email = 'code@tythos.net'
-                    }
-                }
-            }
         }
+    }
+
+    repositories {
+        // 
     }
 }
