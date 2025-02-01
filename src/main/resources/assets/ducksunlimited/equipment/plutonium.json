@@ -1,0 +1,14 @@
+{
+    "layers": {
+        "humanoid": [
+            {
+                "texture": "ducksunlimited:plutonium"
+            }
+        ],
+        "humanoid_leggings": [
+            {
+                "texture": "ducksunlimited:plutonium"
+            }
+        ]
+    }
+}
