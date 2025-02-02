@@ -7,7 +7,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.ItemGroups;
+// import net.minecraft.item.ItemGroups;
 import net.minecraft.item.SwordItem;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.item.ToolMaterial;
@@ -19,6 +19,10 @@ import java.util.Map;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ItemGroup;
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
 
 public class ModItems {
         public static Item register(Item item, RegistryKey<Item> registryKey) {
@@ -109,22 +113,25 @@ public class ModItems {
                                         new Item.Settings().registryKey(SUPERBONKER_9000_KEY)),
                         SUPERBONKER_9000_KEY);
 
+        // define custom item group
+        public static final RegistryKey<ItemGroup> CUSTOM_ITEM_GROUP_KEY = RegistryKey
+                        .of(Registries.ITEM_GROUP.getKey(), Identifier.of("ducksunlimited", "item_group"));
+        public static final ItemGroup CUSTOM_ITEM_GROUP = FabricItemGroup.builder()
+                        .icon(() -> new ItemStack(SUPERBONKER_9000))
+                        .displayName(Text.translatable("itemGroup.ducksunlimited")).build();
+
         // initialize mod with entries
 
         public static void initialize() {
-                ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS)
-                                .register((itemGroup) -> itemGroup.add(ModItems.SUSPICIOUS_SUBSTANCE));
-                ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS)
-                                .register((itemGroup) -> itemGroup.add(ModItems.TEH_NOMZ));
-                ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS)
-                                .register((itemGroup) -> itemGroup.add(ModItems.SUPERBONKER_9000));
-                ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS)
-                                .register((itemGroup) -> itemGroup.add(ModItems.PLUTONIUM_HELMET));
-                ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS)
-                                .register((itemGroup) -> itemGroup.add(ModItems.PLUTONIUM_CHESTPLATE));
-                ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS)
-                                .register((itemGroup) -> itemGroup.add(ModItems.PLUTONIUM_LEGGINGS));
-                ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS)
-                                .register((itemGroup) -> itemGroup.add(ModItems.PLUTONIUM_BOOTS));
+                Registry.register(Registries.ITEM_GROUP, CUSTOM_ITEM_GROUP_KEY, CUSTOM_ITEM_GROUP);
+                ItemGroupEvents.modifyEntriesEvent(CUSTOM_ITEM_GROUP_KEY).register(itemGroup -> {
+                        itemGroup.add(SUSPICIOUS_SUBSTANCE);
+                        itemGroup.add(TEH_NOMZ);
+                        itemGroup.add(SUPERBONKER_9000);
+                        itemGroup.add(PLUTONIUM_HELMET);
+                        itemGroup.add(PLUTONIUM_CHESTPLATE);
+                        itemGroup.add(PLUTONIUM_LEGGINGS);
+                        itemGroup.add(PLUTONIUM_BOOTS);
+                });
         }
 }
