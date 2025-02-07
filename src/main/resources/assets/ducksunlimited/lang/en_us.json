@@ -8,5 +8,7 @@
     "item.ducksunlimited.plutonium_boots": "Plutonium Boots",
     "itemGroup.ducksunlimited": "The Gud Stuff",
     "item.ducksunlimited.boomstick": "MAH BOOMSCHTICK!",
-    "enchantment.ducksunlimited.thundering": "Thundering"
+    "enchantment.ducksunlimited.thundering": "Thundering",
+    "item.ducksunlimited.counter": "Counter",
+    "item.ducksunlimited.counter.info": "Used %1$s times"
 }

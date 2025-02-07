@@ -23,7 +23,6 @@ import net.minecraft.item.ItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.tythos.ducksunlimited.BoomStick;
 
 public class ModItems {
         public static Item register(Item item, RegistryKey<Item> registryKey) {
@@ -44,6 +43,9 @@ public class ModItems {
 
         public static final RegistryKey<Item> BOOMSTICK_KEY = RegistryKey.of(RegistryKeys.ITEM,
                         Identifier.of("ducksunlimited", "boomstick"));
+
+        public static final RegistryKey<Item> COUNTER_KEY = RegistryKey.of(RegistryKeys.ITEM,
+                        Identifier.of("ducksunlimited", "counter"));
 
         // define custom material, armor
         public static final int BASE_DURABILITY = 15;
@@ -121,14 +123,15 @@ public class ModItems {
                         new BoomStick(new Item.Settings().registryKey(BOOMSTICK_KEY)),
                         BOOMSTICK_KEY);
 
+        public static final Item COUNTER = register(new CounterItem(new Item.Settings().registryKey(
+                        COUNTER_KEY).component(ModComponents.CLICK_COUNT_COMPONENT, 0)), COUNTER_KEY);
+
         // define custom item group
         public static final RegistryKey<ItemGroup> CUSTOM_ITEM_GROUP_KEY = RegistryKey
                         .of(Registries.ITEM_GROUP.getKey(), Identifier.of("ducksunlimited", "item_group"));
         public static final ItemGroup CUSTOM_ITEM_GROUP = FabricItemGroup.builder()
                         .icon(() -> new ItemStack(SUPERBONKER_9000))
                         .displayName(Text.translatable("itemGroup.ducksunlimited")).build();
-
-        // add item with custom interaction
 
         // initialize mod with entries
         public static void initialize() {
