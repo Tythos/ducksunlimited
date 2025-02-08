@@ -10,5 +10,6 @@
     "item.ducksunlimited.boomstick": "MAH BOOMSCHTICK!",
     "enchantment.ducksunlimited.thundering": "Thundering",
     "item.ducksunlimited.counter": "Counter",
-    "item.ducksunlimited.counter.info": "Used %1$s times"
+    "item.ducksunlimited.counter.info": "Used %1$s times",
+    "item.minecraft.potion.effect.tater": "Potato Juice"
 }
