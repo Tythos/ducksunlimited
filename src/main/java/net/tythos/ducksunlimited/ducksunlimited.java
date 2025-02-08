@@ -38,5 +38,6 @@ public class ducksunlimited implements ModInitializer {
 					Items.POTATO,
 					Registries.POTION.getEntry(TATER_POTION));
 		});
+		ModBlocks.initialize();
 	}
 }
