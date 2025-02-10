@@ -39,5 +39,6 @@ public class ducksunlimited implements ModInitializer {
 					Registries.POTION.getEntry(TATER_POTION));
 		});
 		ModBlocks.initialize();
+		ModBlockEntities.initialize();
 	}
 }

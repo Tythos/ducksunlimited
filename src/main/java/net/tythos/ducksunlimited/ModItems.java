@@ -147,6 +147,7 @@ public class ModItems {
                         itemGroup.add(BOOMSTICK);
                         itemGroup.add(ModBlocks.CONDENSED_DIRT.asItem());
                         itemGroup.add(ModBlocks.PRISMARINE_LAMP.asItem());
+                        itemGroup.add(ModBlocks.COUNTER_BLOCK.asItem());
                 });
         }
 }

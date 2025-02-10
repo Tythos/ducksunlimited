@@ -12,6 +12,7 @@
     "item.ducksunlimited.counter": "Counter",
     "item.ducksunlimited.counter.info": "Used %1$s times",
     "item.minecraft.potion.effect.tater": "Potato Juice",
-    "block.ducksunlmited.condensed_dirt": "Condensed Dirt",
-    "block.ducksunlmited.prismarine_lamp": "Prismarine Lamp"
+    "block.ducksunlimited.condensed_dirt": "Condensed Dirt",
+    "block.ducksunlimited.prismarine_lamp": "Prismarine Lamp",
+    "block.ducksunlimited.counter_block": "Counter Block"
 }

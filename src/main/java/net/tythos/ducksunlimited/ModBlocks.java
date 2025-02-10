@@ -47,6 +47,14 @@ public class ModBlocks {
                     .luminance(PrismarineLampBlock::getLuminance)),
             PRISMARINE_LAMP_KEY, true);
 
+    public static final RegistryKey<Block> COUNTER_BLOCK_KEY = RegistryKey.of(RegistryKeys.BLOCK,
+            Identifier.of("ducksunlimited", "counter_block"));
+
+    public static final Block COUNTER_BLOCK = register(
+            new CounterBlock(AbstractBlock.Settings.create()
+                    .registryKey(COUNTER_BLOCK_KEY)),
+            COUNTER_BLOCK_KEY, true);
+
     public static void initialize() {
     }
 }
