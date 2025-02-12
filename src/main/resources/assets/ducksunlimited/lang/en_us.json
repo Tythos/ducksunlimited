@@ -14,5 +14,6 @@
     "item.minecraft.potion.effect.tater": "Potato Juice",
     "block.ducksunlimited.condensed_dirt": "Condensed Dirt",
     "block.ducksunlimited.prismarine_lamp": "Prismarine Lamp",
-    "block.ducksunlimited.counter_block": "Counter Block"
+    "block.ducksunlimited.counter_block": "Counter Block",
+    "effect.ducksunlimited.tater": "Tater"
 }

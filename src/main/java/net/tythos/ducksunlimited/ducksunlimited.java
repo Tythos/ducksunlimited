@@ -40,5 +40,6 @@ public class ducksunlimited implements ModInitializer {
 		});
 		ModBlocks.initialize();
 		ModBlockEntities.initialize();
+		ModStatusEffects.initialize();
 	}
 }
