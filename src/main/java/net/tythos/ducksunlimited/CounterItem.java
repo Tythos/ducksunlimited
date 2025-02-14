@@ -2,14 +2,19 @@ package net.tythos.ducksunlimited;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemUsageContext;
+
 import java.util.List;
 import net.minecraft.text.Text;
 import net.minecraft.item.tooltip.TooltipType;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Hand;
+import net.minecraft.sound.SoundCategory;
 
 public class CounterItem extends Item {
     public CounterItem(Settings settings) {
@@ -39,5 +44,22 @@ public class CounterItem extends Item {
         }
         stack.remove(ModComponents.MY_CUSTOM_COMPONENT);
         return ActionResult.SUCCESS;
+    }
+
+    @Override
+    public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
+        if (!entity.getWorld().isClient()) {
+            entity.playSound(SoundEvents.ENTITY_PILLAGER_AMBIENT, 2f, 0.7f);
+        }
+        return super.useOnEntity(stack, user, entity, hand);
+    }
+
+    @Override
+    public ActionResult useOnBlock(ItemUsageContext context) {
+        if (!context.getWorld().isClient()) {
+            context.getWorld().playSound(null, context.getBlockPos(), SoundEvents.BLOCK_COPPER_PLACE,
+                    SoundCategory.PLAYERS, 1f, 1f);
+        }
+        return super.useOnBlock(context);
     }
 }
