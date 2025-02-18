@@ -9,5 +9,6 @@ public class ducksunlimitedClient implements ClientModInitializer {
 		BlockEntityRendererFactories.register(
 				ModBlockEntities.COUNTER_BLOCK_ENTITY,
 				CounterBlockEntityRenderer::new);
+		ModCommandsClient.initialize();
 	}
 }

@@ -42,5 +42,6 @@ public class ducksunlimited implements ModInitializer {
 		ModBlockEntities.initialize();
 		ModStatusEffects.initialize();
 		ModSounds.initialize();
+		ModCommands.initialize();
 	}
 }
