@@ -18,6 +18,8 @@ import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.Identifier;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.util.Util;
+import net.minecraft.util.math.ColorHelper;
 
 public class ClientModRendering {
     static float totalTickDelta = 0;
@@ -85,11 +87,21 @@ public class ClientModRendering {
         drawContext.drawText(textRenderer, "Hello, world!", 10, 200, 0xFFFFFFFF, false);
     }
 
+    public static void drawPulsingSquare(DrawContext drawContext, RenderTickCounter tickDeltaManager) {
+        int color = 0xFFFF0000;
+        int targetColor = 0xFF00FF00;
+        double currentTime = Util.getMeasuringTimeMs();
+        float lerpedAmount = MathHelper.abs(MathHelper.sin((float) (currentTime / 1e3)));
+        int lerpedColor = ColorHelper.lerp(lerpedAmount, color, targetColor);
+        drawContext.fill(0, 0, 100, 100, 0, lerpedColor);
+    }
+
     public static void initialize() {
         HudRenderCallback.EVENT.register(ClientModRendering::drawDiamond);
         HudRenderCallback.EVENT.register(ClientModRendering::drawRectangle);
         HudRenderCallback.EVENT.register(ClientModRendering::drawWithScissors);
         HudRenderCallback.EVENT.register(ClientModRendering::drawCustomTexture);
         HudRenderCallback.EVENT.register(ClientModRendering::drawSomeText);
+        HudRenderCallback.EVENT.register(ClientModRendering::drawPulsingSquare);
     }
 }
