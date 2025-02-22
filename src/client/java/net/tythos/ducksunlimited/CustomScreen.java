@@ -5,10 +5,13 @@ import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.text.Text;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.MinecraftClient;
 
 public class CustomScreen extends Screen {
     public CustomScreen(Text title) {
         super(title);
+        CustomWidget customWidget = new CustomWidget(40, 80, 120, 20);
+        this.addDrawableChild(customWidget);
     }
 
     @Override
