@@ -10,8 +10,10 @@ import net.minecraft.potion.Potions;
 import net.minecraft.util.Identifier;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.fabricmc.fabric.api.registry.FabricBrewingRecipeRegistryBuilder;
 import net.minecraft.item.Items;
+import net.minecraft.particle.SimpleParticleType;
 
 public class ducksunlimited implements ModInitializer {
 	public static final String MOD_ID = "ducksunlimited";
@@ -43,5 +45,6 @@ public class ducksunlimited implements ModInitializer {
 		ModStatusEffects.initialize();
 		ModSounds.initialize();
 		ModCommands.initialize();
+		ModRendering.initialize();
 	}
 }

@@ -20,6 +20,8 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.ColorHelper;
+import net.minecraft.particle.SimpleParticleType;
+import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 
 public class ClientModRendering {
     static float totalTickDelta = 0;
