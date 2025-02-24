@@ -20,6 +20,9 @@
 		],
 		"client": [
 			"net.tythos.ducksunlimited.ducksunlimitedClient"
+		],
+		"fabric-datagen": [
+			"net.tythos.ducksunlimited.datagen.DucksUnlimitedDataGenerator"
 		]
 	},
 	"mixins": [
