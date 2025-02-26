@@ -9,5 +9,6 @@ public class DucksUnlimitedDataGenerator implements DataGeneratorEntrypoint {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
         pack.addProvider(ItemTagProvider::new);
         // pack.addProvider(EnglishLangProvider::new);
+        pack.addProvider(AdvancementProvider::new);
     }
 }

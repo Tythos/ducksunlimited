@@ -10,6 +10,7 @@ import net.minecraft.client.gui.widget.GridWidget;
 import net.tythos.ducksunlimited.ModRendering;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.minecraft.client.particle.EndRodParticle;
+import net.tythos.ducksunlimited.datagen.ModCriteria;
 
 public class ducksunlimitedClient implements ClientModInitializer {
 	@Override
@@ -22,5 +23,7 @@ public class ducksunlimitedClient implements ClientModInitializer {
 		ParticleFactoryRegistry.getInstance().register(
 				ModRendering.SPARKLE_PARTICLE,
 				EndRodParticle.Factory::new);
+		ModCriteria.init();
+		// ModCriteria.USE_TOOL.trigger(serverPlayer, usedCount);
 	}
 }
