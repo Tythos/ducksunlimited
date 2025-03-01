@@ -145,9 +145,9 @@ public class ModItems {
                         itemGroup.add(PLUTONIUM_LEGGINGS);
                         itemGroup.add(PLUTONIUM_BOOTS);
                         itemGroup.add(BOOMSTICK);
-                        itemGroup.add(ModBlocks.CONDENSED_DIRT.asItem());
-                        itemGroup.add(ModBlocks.PRISMARINE_LAMP.asItem());
-                        itemGroup.add(ModBlocks.COUNTER_BLOCK.asItem());
+                        // itemGroup.add(ModBlocks.CONDENSED_DIRT.asItem());
+                        // itemGroup.add(ModBlocks.PRISMARINE_LAMP.asItem());
+                        // itemGroup.add(ModBlocks.COUNTER_BLOCK.asItem());
                 });
         }
 }

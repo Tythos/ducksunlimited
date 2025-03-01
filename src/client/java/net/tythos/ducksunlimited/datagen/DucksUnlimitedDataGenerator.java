@@ -13,5 +13,6 @@ public class DucksUnlimitedDataGenerator implements DataGeneratorEntrypoint {
         pack.addProvider(RecipeProvider::new);
         // pack.addProvider(BlockLootTableProvider::new);
         // pack.addProvider(ChestLootTableProvider::new);
+        pack.addProvider(ModelProvider::new);
     }
 }

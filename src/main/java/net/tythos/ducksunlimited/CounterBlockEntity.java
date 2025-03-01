@@ -1,51 +1,54 @@
-package net.tythos.ducksunlimited;
+// package net.tythos.ducksunlimited;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.world.World;
+// import net.minecraft.block.BlockState;
+// import net.minecraft.block.entity.BlockEntity;
+// import net.minecraft.util.math.BlockPos;
+// import net.minecraft.registry.RegistryWrapper;
+// import net.minecraft.nbt.NbtCompound;
+// import net.minecraft.world.World;
 
-public class CounterBlockEntity extends BlockEntity {
-    private int clicks = 0;
-    private int ticksSinceLast = 0;
+// public class CounterBlockEntity extends BlockEntity {
+// private int clicks = 0;
+// private int ticksSinceLast = 0;
 
-    public int getClicks() {
-        return clicks;
-    }
+// public int getClicks() {
+// return clicks;
+// }
 
-    public void incrementClicks() {
-        if (ticksSinceLast < 10)
-            return;
-        ticksSinceLast = 0;
-        clicks++;
-        markDirty();
-    }
+// public void incrementClicks() {
+// if (ticksSinceLast < 10)
+// return;
+// ticksSinceLast = 0;
+// clicks++;
+// markDirty();
+// }
 
-    public int getTicksSinceLast() {
-        return ticksSinceLast;
-    }
+// public int getTicksSinceLast() {
+// return ticksSinceLast;
+// }
 
-    public CounterBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.COUNTER_BLOCK_ENTITY, pos, state);
-    }
+// public CounterBlockEntity(BlockPos pos, BlockState state) {
+// super(ModBlockEntities.COUNTER_BLOCK_ENTITY, pos, state);
+// }
 
-    @Override
-    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        nbt.putInt("clicks", clicks);
-        nbt.putInt("ticksSinceLast", ticksSinceLast);
-        super.writeNbt(nbt, registryLookup);
-    }
+// @Override
+// protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup
+// registryLookup) {
+// nbt.putInt("clicks", clicks);
+// nbt.putInt("ticksSinceLast", ticksSinceLast);
+// super.writeNbt(nbt, registryLookup);
+// }
 
-    @Override
-    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.readNbt(nbt, registryLookup);
-        clicks = nbt.getInt("clicks");
-        ticksSinceLast = nbt.getInt("ticksSinceLast");
-    }
+// @Override
+// protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup
+// registryLookup) {
+// super.readNbt(nbt, registryLookup);
+// clicks = nbt.getInt("clicks");
+// ticksSinceLast = nbt.getInt("ticksSinceLast");
+// }
 
-    public static void tick(World world, BlockPos blockPos, BlockState blockState, CounterBlockEntity entity) {
-        entity.ticksSinceLast++;
-    }
-}
+// public static void tick(World world, BlockPos blockPos, BlockState
+// blockState, CounterBlockEntity entity) {
+// entity.ticksSinceLast++;
+// }
+// }
