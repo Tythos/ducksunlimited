@@ -22,6 +22,10 @@ public class ModelProvider extends FabricModelProvider {
         // .fence(ModBlocks.RUBY_FENCE);
         // blockStateModelGenerator.registerDoor(ModBlocks.RUBY_DOOR);
         // blockStateModelGenerator.registerTrapdoor(ModBlocks.RUBY_TRAPDOOR);
+        // CustomBlockStateModelGenerator.registerVerticalSlab(blockStateModelGenerator,
+        // ModBlocks.VERTICAL_OAK_LOG_SLAB,
+        // Blocks.OAK_LOG,
+        // CustomBlockStateModelGenerator.blockAndTopForEnds(Blocks.OAK_LOG));
     }
 
     @Override
