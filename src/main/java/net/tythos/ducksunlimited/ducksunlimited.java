@@ -46,5 +46,6 @@ public class ducksunlimited implements ModInitializer {
 		ModSounds.initialize();
 		ModCommands.initialize();
 		ModRendering.initialize();
+		ModEvents.initialize();
 	}
 }
