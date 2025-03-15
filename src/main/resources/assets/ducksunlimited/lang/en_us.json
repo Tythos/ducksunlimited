@@ -16,5 +16,7 @@
     "block.ducksunlimited.prismarine_lamp": "Prismarine Lamp",
     "block.ducksunlimited.counter_block": "Counter Block",
     "effect.ducksunlimited.tater": "Tater",
-    "death.attack.tater": "%1$s died from Tater damage!"
+    "death.attack.tater": "%1$s died from Tater damage!",
+    "ducksunlimited.text.hello": "Hello!",
+    "ducksunlimited.text.bye": "Goodbye :("
 }

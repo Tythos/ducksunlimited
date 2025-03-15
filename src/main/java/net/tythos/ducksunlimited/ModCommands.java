@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
+import net.minecraft.text.MutableText;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
@@ -16,6 +17,7 @@ import net.minecraft.command.argument.RegistryEntryReferenceArgumentType;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.command.suggestion.SuggestionProviders;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import net.minecraft.util.Formatting;
 
 public class ModCommands {
     private static int executeDedicatedCommand(CommandContext<ServerCommandSource> context) {
@@ -159,6 +161,7 @@ public class ModCommands {
             dispatcher.register(CommandManager.literal("command_with_custom_arg").then(CommandManager
                     .argument("block_pos", new BlockPosArgumentType()).executes(ModCommands::executeCustomArgCommand)));
         });
+
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             dispatcher.register(CommandManager.literal("command_with_suggestions")
                     .then(CommandManager
@@ -168,11 +171,26 @@ public class ModCommands {
                             .suggests(SuggestionProviders.SUMMONABLE_ENTITIES)
                             .executes(ModCommands::executeCommandWithSuggestions)));
         });
+
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             dispatcher.register(CommandManager.literal("command_with_custom_suggestions")
                     .then(CommandManager.argument("player_name", StringArgumentType.string())
                             .suggests(new PlayerSuggestionProvider())
                             .executes(ModCommands::executeCommandWithCustomSuggestions)));
+        });
+
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
+            dispatcher.register(CommandManager.literal("text_and_translations").executes(context -> {
+                Text literal = Text.of("Hello, world!");
+                MutableText mutable = Text.literal("Hello, World!");
+                Text mutableAsText = mutable;
+                Text translatable = Text.translatable("ducksunlimited.text.hello");
+                MutableText mutable2 = Text.translatable("ducksunlimited.text.bye");
+                context.getSource().sendFeedback(() -> translatable, false);
+                context.getSource().sendFeedback(
+                        () -> mutable2.formatted(Formatting.AQUA, Formatting.BOLD, Formatting.UNDERLINE), false);
+                return 1;
+            }));
         });
     }
 }
