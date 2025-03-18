@@ -1,10 +1,7 @@
 package net.tythos.ducksunlimited;
 
-import net.minecraft.client.model.ModelPart;
-import net.minecraft.client.render.entity.model.ChickenEntityModel;
+import software.bernie.geckolib.model.GeoModel;
 
-public class DuckModel extends ChickenEntityModel {
-    public DuckModel(ModelPart root) {
-        super(root);
-    }
+public class DuckModel extends GeoModel<DuckEntity> {
+
 }
