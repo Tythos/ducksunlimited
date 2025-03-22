@@ -13,6 +13,8 @@ public class DucksUnlimited implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        // init()
+
     }
 
     public static Identifier get_resource_location(String path) {
