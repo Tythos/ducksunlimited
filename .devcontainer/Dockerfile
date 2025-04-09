@@ -9,10 +9,9 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Gradle
-# Note: we need a specific version to match our project's wrapper
-RUN curl -L https://services.gradle.org/distributions/gradle-8.5-bin.zip -o gradle.zip \
+RUN curl -L https://services.gradle.org/distributions/gradle-8.12-bin.zip -o gradle.zip \
     && unzip gradle.zip \
-    && mv gradle-8.5 /opt/gradle \
+    && mv gradle-8.12 /opt/gradle \
     && rm gradle.zip
 
 # Add Gradle to PATH
