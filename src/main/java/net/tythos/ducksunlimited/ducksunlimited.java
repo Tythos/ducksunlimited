@@ -1,21 +1,32 @@
 package net.tythos.ducksunlimited;
 
+import net.tythos.ducksunlimited.entity.DuckEntity;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.tythos.ducksunlimited.command.DuckCommand;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.RegistryKey;
+import net.tythos.ducksunlimited.command.DuckCommands;
 
 public class DucksUnlimited implements ModInitializer {
-    public static final String MOD_ID = "DucksUnlimited";
-    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    public static final String MOD_ID = "ducksunlimited";
+
+    public static final EntityType<DuckEntity> DUCK = Registry.register(
+            Registries.ENTITY_TYPE,
+            Identifier.of(MOD_ID, "duck"),
+            EntityType.Builder.create(DuckEntity::new, SpawnGroup.CREATURE)
+                    .dimensions(0.4f, 0.7f)
+                    .build(RegistryKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of(MOD_ID, "duck"))));
 
     @Override
     public void onInitialize() {
-        LOGGER.info("Initializing DucksUnlimited mod");
-        CommandRegistrationCallback.EVENT.register(
-            (dispatcher, registryAccess, environment) -> DuckCommand.register(dispatcher)
-        );
+        FabricDefaultAttributeRegistry.register(DUCK, DuckEntity.createDuckAttributes());
+
+        CommandRegistrationCallback.EVENT.register(DuckCommands::register);
     }
 }
