@@ -3,20 +3,55 @@ package net.tythos.ducksunlimited.entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.passive.ChickenEntity;
+import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animatable.manager.AnimatableManager;
+import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class DuckEntity extends ChickenEntity {
-    public DuckEntity(EntityType<? extends ChickenEntity> entityType, World world) {
+public class DuckEntity extends AnimalEntity implements GeoEntity {
+    private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
+
+    public DuckEntity(EntityType<DuckEntity> entityType, World world) {
         super(entityType, world);
     }
 
     public static DefaultAttributeContainer.Builder createDuckAttributes() {
-        return ChickenEntity.createChickenAttributes()
-                .add(EntityAttributes.MAX_HEALTH, 4.0D);
+        return AnimalEntity.createMobAttributes()
+                .add(EntityAttributes.MAX_HEALTH, 4.0D)
+                .add(EntityAttributes.MOVEMENT_SPEED, 0.25D);
+    }
+
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
+        // Add animation controllers here
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return this.cache;
+    }
+
+    @Override
+    public double getTick(Object object) {
+        return getWorld().getTime();
+    }
+
+    @Override
+    public boolean isBreedingItem(ItemStack stack) {
+        return false; // TODO: Implement proper breeding items
+    }
+
+    @Override
+    public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
+        return null; // TODO: Implement proper breeding
     }
 
     @Override

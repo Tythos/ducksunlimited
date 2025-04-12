@@ -1,11 +1,24 @@
 package net.tythos.ducksunlimited.client.render;
 
-import net.minecraft.client.model.ModelPart;
-import net.minecraft.client.render.entity.model.ChickenEntityModel;
+import net.minecraft.util.Identifier;
+import software.bernie.geckolib.model.GeoModel;
+import software.bernie.geckolib.renderer.base.GeoRenderState;
+import net.tythos.ducksunlimited.entity.DuckEntity;
+import net.tythos.ducksunlimited.DucksUnlimited;
 
-// For now, we'll just use the chicken model
-public class DuckEntityModel extends ChickenEntityModel {
-    public DuckEntityModel(ModelPart root) {
-        super(root);
+public class DuckEntityModel extends GeoModel<DuckEntity> {
+    @Override
+    public Identifier getModelResource(GeoRenderState renderState) {
+        return Identifier.of(DucksUnlimited.MOD_ID, "geo/duck.geo.json");
+    }
+
+    @Override
+    public Identifier getTextureResource(GeoRenderState renderState) {
+        return Identifier.of(DucksUnlimited.MOD_ID, "textures/entity/duck/duck.png");
+    }
+
+    @Override
+    public Identifier getAnimationResource(DuckEntity duckEntity) {
+        return Identifier.of(DucksUnlimited.MOD_ID, "animations/duck.animation.json");
     }
 }
