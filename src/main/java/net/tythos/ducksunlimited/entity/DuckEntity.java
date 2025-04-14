@@ -1,6 +1,7 @@
 package net.tythos.ducksunlimited.entity;
 
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.passive.AnimalEntity;
@@ -11,9 +12,11 @@ import net.minecraft.world.World;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
+import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.manager.AnimatableManager;
+import software.bernie.geckolib.animatable.processing.AnimationController;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 public class DuckEntity extends AnimalEntity implements GeoEntity {
@@ -21,17 +24,18 @@ public class DuckEntity extends AnimalEntity implements GeoEntity {
 
     public DuckEntity(EntityType<DuckEntity> entityType, World world) {
         super(entityType, world);
+        this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
     }
 
     public static DefaultAttributeContainer.Builder createDuckAttributes() {
         return AnimalEntity.createMobAttributes()
-                .add(EntityAttributes.MAX_HEALTH, 4.0D)
-                .add(EntityAttributes.MOVEMENT_SPEED, 0.25D);
+                .add(EntityAttributes.MOVEMENT_SPEED, 0.25D)
+                .add(EntityAttributes.MAX_HEALTH, 4.0D);
     }
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
-        // Add animation controllers here
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<GeoAnimatable>(this, "controller", 10, this::predicate));
     }
 
     @Override

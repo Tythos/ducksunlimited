@@ -9,7 +9,7 @@ import net.tythos.ducksunlimited.DucksUnlimited;
 public class DuckEntityModel extends GeoModel<DuckEntity> {
     @Override
     public Identifier getModelResource(GeoRenderState renderState) {
-        return Identifier.of(DucksUnlimited.MOD_ID, "geo/duck.geo.json");
+        return Identifier.of(DucksUnlimited.MOD_ID, "models/entity/duck.geo.json");
     }
 
     @Override

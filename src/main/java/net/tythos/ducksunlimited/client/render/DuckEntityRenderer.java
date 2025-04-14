@@ -11,6 +11,11 @@ public class DuckEntityRenderer extends GeoEntityRenderer<DuckEntity, DuckEntity
     }
 
     @Override
+    public GeoEntityRenderer<DuckEntity, DuckEntityRenderState> withScale(float scale) {
+        return super.withScale(scale);
+    }
+
+    @Override
     public ChickenEntityRenderState createRenderState() {
         return new ChickenEntityRenderState();
     }
