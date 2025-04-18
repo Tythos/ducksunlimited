@@ -1,4 +1,4 @@
-package net.tythos.ducksunlimited.entity;
+package net.tythos.ducksunlimited.duck;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.pathing.PathNodeType;
