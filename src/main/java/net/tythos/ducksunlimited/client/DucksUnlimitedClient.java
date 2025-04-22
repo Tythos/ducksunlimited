@@ -3,6 +3,8 @@ package net.tythos.ducksunlimited.client;
 import net.tythos.ducksunlimited.DucksUnlimited;
 import net.tythos.ducksunlimited.client.cube.CubeEntityModel;
 import net.tythos.ducksunlimited.client.cube.CubeEntityRenderer;
+import net.tythos.ducksunlimited.client.duck.DuckEntityModel;
+import net.tythos.ducksunlimited.client.duck.DuckEntityRenderer;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -18,6 +20,8 @@ public class DucksUnlimitedClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         EntityModelLayerRegistry.registerModelLayer(CubeEntityModel.CUBE, CubeEntityModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(DuckEntityModel.DUCK, DuckEntityModel::getTexturedModelData);
         EntityRendererRegistry.register(DucksUnlimited.CUBE, CubeEntityRenderer::new);
+        EntityRendererRegistry.register(DucksUnlimited.DUCK, DuckEntityRenderer::new);
     }
 }

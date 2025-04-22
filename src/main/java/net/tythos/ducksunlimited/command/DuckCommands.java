@@ -8,7 +8,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.server.command.CommandManager;
 import net.tythos.ducksunlimited.DucksUnlimited;
-import net.tythos.ducksunlimited.cube.CubeEntity;
+import net.tythos.ducksunlimited.duck.DuckEntity;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.entity.SpawnReason;
 
@@ -25,7 +25,7 @@ public class DuckCommands {
                             ServerCommandSource source = context.getSource();
                             ServerWorld world = source.getWorld();
                             BlockPos pos = BlockPos.ofFloored(source.getPosition());
-                            CubeEntity duck = DucksUnlimited.CUBE.create(world, null, pos, SpawnReason.COMMAND, true,
+                            DuckEntity duck = DucksUnlimited.DUCK.create(world, null, pos, SpawnReason.COMMAND, true,
                                     false);
 
                             if (duck != null) {

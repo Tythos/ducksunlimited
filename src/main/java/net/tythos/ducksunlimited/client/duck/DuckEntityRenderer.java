@@ -1,19 +1,38 @@
 package net.tythos.ducksunlimited.client.duck;
 
-// import net.tythos.ducksunlimited.entity.DuckEntity;
-// import software.bernie.geckolib.renderer.GeoEntityRenderer;
-// import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.MobEntityRenderer;
+import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.util.Identifier;
+import net.tythos.ducksunlimited.DucksUnlimited;
+import net.tythos.ducksunlimited.duck.DuckEntity;
 
-// public class DuckEntityRenderer extends GeoEntityRenderer<DuckEntity, DuckEntityRenderState> {
-//     public DuckEntityRenderer(EntityRendererFactory.Context context) {
-//         super(context, new DuckEntityModel());
-//     }
+public class DuckEntityRenderer extends MobEntityRenderer<DuckEntity, DuckEntityRenderState, DuckEntityModel> {
+    public DuckEntityRenderer(EntityRendererFactory.Context context) {
+        super(context, new DuckEntityModel(context.getPart(DuckEntityModel.DUCK)), 0.75f);
+    }
 
-//     @Override
-//     public GeoEntityRenderer<DuckEntity, DuckEntityRenderState> withScale(float scale) {
-//         return super.withScale(scale);
-//     }
-// }
+    @Override
+    public Identifier getTexture(DuckEntityRenderState state) {
+        return Identifier.of(DucksUnlimited.MOD_ID, "textures/entity/duck/duck.png");
+    }
 
-public class DuckEntityRenderer {
+    @Override
+    public DuckEntityRenderState createRenderState() {
+        return new DuckEntityRenderState();
+    }
+
+    @Override
+    public void render(DuckEntityRenderState state, MatrixStack matrixStack,
+            VertexConsumerProvider vertexConsumerProvider, int i) {
+        matrixStack.scale(1f, 1f, 1f);
+        super.render(state, matrixStack, vertexConsumerProvider, i);
+    }
+
+    @Override
+    public void updateRenderState(DuckEntity duckEntity, DuckEntityRenderState duckEntityRenderState, float f) {
+        super.updateRenderState(duckEntity, duckEntityRenderState, f);
+        duckEntityRenderState.idleAnimationState.copyFrom(duckEntity.idleAnimationState);
+    }
 }
